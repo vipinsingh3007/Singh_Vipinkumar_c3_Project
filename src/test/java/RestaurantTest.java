@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -68,4 +69,11 @@ class RestaurantTest {
                 () -> restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //Calculating the total order value of the selected items from the menu.
+    @Test
+    public void calculate_total_order_value_of_the_selected_items_from_menu(){
+        List<Item> orderList = restaurant.getOrder();
+        assertEquals(200,restaurant.calculateOrderTotal(orderList));
+    }
 }
