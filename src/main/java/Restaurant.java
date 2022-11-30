@@ -37,7 +37,7 @@ public class Restaurant {
         return menu;
     }
 
-    public List<Item> getOrder() {
+    public List<Item> getOrderList() {
         return order;
     }
 
@@ -72,13 +72,21 @@ public class Restaurant {
 
     }
 
-    public void addToOrder(Item item){
-        order.add(item);
+    public void addToOrder(String itemName) {
+
+        Item itemToBeAddedToOrder = findItemByName(itemName);
+        order.add(itemToBeAddedToOrder);
     }
 
 
-    public Double calculateOrderTotal(List<Item> list){
-        return Double.valueOf(100);
+    public int calculateOrderTotal(List<Item> list){
+        int totalAmount = 0;
+        for(Item item: list){
+            totalAmount = totalAmount + item.getPrice();
+        }
+
+
+        return totalAmount;
     }
 
 

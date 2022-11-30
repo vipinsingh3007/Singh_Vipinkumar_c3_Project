@@ -70,10 +70,18 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    @Test
+    public void adding_item_to_order_should_increase_order_size_by_1() {
+        restaurant.addToOrder("Sweet corn soup");
+        assertEquals(1, restaurant.getOrderList().size());
+    }
+
     //Calculating the total order value of the selected items from the menu.
     @Test
-    public void calculate_total_order_value_of_the_selected_items_from_menu(){
-        List<Item> orderList = restaurant.getOrder();
-        assertEquals(200,restaurant.calculateOrderTotal(orderList));
+    public void calculate_total_order_value_of_the_selected_items_from_menu() {
+        restaurant.addToOrder("Sweet corn soup");
+        restaurant.addToOrder("Vegetable lasagne");
+        List<Item> orderList = restaurant.getOrderList();
+        assertEquals(388,restaurant.calculateOrderTotal(orderList));
     }
 }
